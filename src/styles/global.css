@@ -1,0 +1,62 @@
+@import "./variables.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--wine);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  border: 0;
+}
+
+.page {
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding: 14px;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 8px;
+  }
+}
+section[id] {
+  scroll-margin-top: 145px;
+}
+
+@media (max-width: 760px) {
+  section[id] {
+    scroll-margin-top: 115px;
+  }
+}

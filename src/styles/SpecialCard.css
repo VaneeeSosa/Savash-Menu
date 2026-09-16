@@ -1,0 +1,175 @@
+.special-card {
+  position: relative;
+
+  min-height: 430px;
+
+  padding: 25px;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background: var(--wine);
+
+  color: var(--cream);
+}
+
+.special-card--1 {
+  background: var(--wine);
+  color: var(--cream);
+}
+
+.special-card--2 {
+  background: #e9efe7;
+  color: var(--wine);
+}
+
+.special-card--3 {
+  background: #f2dfd0;
+  color: var(--wine);
+}
+
+.special-card--4 {
+  background: var(--emerald);
+  color: #ffffff;
+}
+
+.special-card__number {
+  position: absolute;
+
+  right: -5px;
+  top: -25px;
+
+  z-index: 1;
+
+  font-family: var(--font-serif);
+
+  font-size: 100px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  opacity: 0.09;
+}
+
+.special-card__image-wrap {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 200px;
+
+  margin-bottom: 8px;
+}
+
+.special-card__image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 18px 20px rgba(0, 0, 0, 0.15)
+    );
+
+  transition:
+    transform 220ms ease;
+}
+
+.special-card:hover
+.special-card__image {
+  transform: translateY(-4px);
+}
+
+.special-card__content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 320px;
+}
+
+.special-card__title {
+  margin: 0 0 12px;
+
+  font-family: var(--font-serif);
+
+  font-size: 38px;
+
+  line-height: 0.98;
+}
+
+.special-card__description {
+  max-width: 300px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  opacity: 0.78;
+}
+
+.special-card__price {
+  position: absolute;
+
+  right: 25px;
+  bottom: 22px;
+
+  z-index: 3;
+
+  font-size: 15px;
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .special-card {
+    min-height: 390px;
+
+    padding: 22px;
+
+    border-radius: 26px;
+  }
+
+  .special-card__image-wrap {
+    height: 180px;
+
+    margin-bottom: 6px;
+  }
+
+  .special-card__title {
+    font-size: 32px;
+  }
+
+  .special-card__number {
+    font-size: 84px;
+  }
+
+  .special-card__description {
+    max-width: 260px;
+  }
+
+  .special-card__price {
+    right: 22px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .special-card {
+    min-height: 360px;
+  }
+
+  .special-card__image-wrap {
+    height: 165px;
+  }
+
+  .special-card__title {
+    font-size: 30px;
+  }
+}

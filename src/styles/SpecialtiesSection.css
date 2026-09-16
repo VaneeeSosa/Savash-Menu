@@ -1,0 +1,98 @@
+.specialties-section {
+  margin-top: 18px;
+
+  padding: clamp(26px, 4vw, 52px);
+
+  overflow: hidden;
+
+  border-radius: 36px;
+
+  background: var(--paper);
+}
+
+.specialties-section__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.specialties-section__title {
+  margin: 0;
+
+  color: var(--wine);
+
+  font-family: var(--font-serif);
+
+  font-size: clamp(40px, 6vw, 72px);
+
+  line-height: 0.9;
+}
+
+.specialties-section__description {
+  max-width: 360px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.specialties-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+/*
+  Con 5 productos:
+
+  1  2
+  3  4
+  5
+*/
+
+.special-card:nth-child(5) {
+  grid-column: span 2;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 760px) {
+  .specialties-section {
+    padding: 22px;
+
+    border-radius: 28px;
+  }
+
+  .specialties-section__header {
+    display: block;
+  }
+
+  .specialties-section__description {
+    margin-top: 12px;
+  }
+
+  .specialties-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .special-card:nth-child(5) {
+    grid-column: auto;
+  }
+}

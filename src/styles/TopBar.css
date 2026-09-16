@@ -1,0 +1,90 @@
+.topbar {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 14px;
+
+  border-radius: 22px;
+
+  background: rgba(244, 239, 229, 0.94);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.14);
+}
+
+.topbar__logo {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.topbar__logo-image {
+  display: block;
+
+  width: auto;
+  height: 42px;
+
+  object-fit: contain;
+}
+
+.topbar__action {
+  min-height: 42px;
+
+  padding: 10px 15px;
+
+  border-radius: 999px;
+
+  background: var(--emerald);
+  color: #ffffff;
+
+  font-size: 0.85rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.topbar__action:hover {
+  background: var(--emerald-dark);
+}
+
+.topbar__action:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    top: 8px;
+  }
+
+  .topbar__logo {
+    font-size: 19px;
+  }
+
+  .topbar__action {
+    padding-inline: 12px;
+    font-size: 0.76rem;
+  }
+}
+@media (max-width: 480px) {
+  .topbar__logo-image {
+    height: 34px;
+  }
+
+  .topbar__action {
+    padding-inline: 12px;
+    font-size: 0.76rem;
+  }
+}

@@ -1,0 +1,200 @@
+.menu-section {
+  margin-top: 18px;
+
+  padding: clamp(26px, 4vw, 52px);
+
+  overflow: hidden;
+
+  border-radius: 36px;
+
+  background: var(--paper);
+}
+
+.menu-section__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.menu-section__title {
+  margin: 0;
+
+  color: var(--wine);
+
+  font-family: var(--font-serif);
+
+  font-size: clamp(40px, 6vw, 72px);
+
+  line-height: 0.9;
+}
+
+.menu-section__description {
+  max-width: 360px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(12, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+/*
+  Base:
+  cualquier tarjeta que no tenga una composición
+  especial ocupa 4 columnas.
+*/
+
+.product-card {
+  grid-column: span 4;
+}
+
+/*
+  Primer bloque visual
+  inspirado directamente en el HTML original.
+*/
+
+.product-card--1 {
+  grid-column: span 7;
+
+  min-height: 430px;
+
+  background: #f7eee8;
+}
+
+.product-card--2 {
+  grid-column: span 5;
+}
+
+.product-card--3 {
+  grid-column: span 5;
+}
+
+.product-card--4 {
+  grid-column: span 7;
+
+  background: #edf5ef;
+}
+
+/*
+  Desde la tarjeta 5 en adelante:
+  4 columnas cada una.
+*/
+
+.product-card--5,
+.product-card--6,
+.product-card--7,
+.product-card--8,
+.product-card--9,
+.product-card--10,
+.product-card--11,
+.product-card--12,
+.product-card--13,
+.product-card--14,
+.product-card--15 {
+  grid-column: span 4;
+}
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  .menu-section {
+    padding: 22px;
+
+    border-radius: 28px;
+  }
+
+  .menu-section__header {
+    display: block;
+  }
+
+  .menu-section__description {
+    margin-top: 12px;
+  }
+
+  .product-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .product-card,
+  .product-card--1,
+  .product-card--2,
+  .product-card--3,
+  .product-card--4,
+  .product-card--5,
+  .product-card--6,
+  .product-card--7,
+  .product-card--8,
+  .product-card--9,
+  .product-card--10,
+  .product-card--11,
+  .product-card--12,
+  .product-card--13,
+  .product-card--14,
+  .product-card--15 {
+    grid-column: auto;
+
+    min-height: 290px;
+  }
+
+  /*
+    Los productos 1 y 4 siguen siendo protagonistas.
+  */
+
+  .product-card--1,
+  .product-card--4 {
+    grid-column: span 2;
+  }
+
+  .product-card__photo {
+    height: 175px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card,
+  .product-card--1,
+  .product-card--2,
+  .product-card--3,
+  .product-card--4,
+  .product-card--5,
+  .product-card--6,
+  .product-card--7,
+  .product-card--8,
+  .product-card--9,
+  .product-card--10,
+  .product-card--11,
+  .product-card--12,
+  .product-card--13,
+  .product-card--14,
+  .product-card--15 {
+    grid-column: auto;
+  }
+
+  .product-card__photo {
+    height: 190px;
+  }
+}
