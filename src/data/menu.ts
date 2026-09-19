@@ -18,7 +18,7 @@ import Colageno from "../assets/images/bebidasF/colageno.png";
 import CR7 from "../assets/images/bebidasF/CR7.png";
 import mangoDurazno from "../assets/images/bebidasF/duraznoMango.png";
 import lateFrio from "../assets/images/bebidasF/lateFrio.png";
-import teAloe from "../assets/images/bebidasF/teAloe.png";
+import teAloe from "../assets/images/bebidasF/TeAloe.png";
 
 import capuchino from "../assets/images/bebidasC/capuchino.png";
 import poncheFrutasCaliente from "../assets/images/bebidasC/poncheFrutas.png";
