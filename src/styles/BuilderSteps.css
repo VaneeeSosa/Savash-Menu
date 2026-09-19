@@ -72,6 +72,15 @@
   background: var(--emerald);
 }
 
+.builder-step--completed {
+  color: #8fd4bd;
+}
+
+.builder-step--completed
+  .builder-step__line {
+  background: var(--emerald);
+}
+
 @media (max-width: 480px) {
   .builder-step__name {
     font-size: 10px;

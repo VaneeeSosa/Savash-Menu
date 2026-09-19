@@ -1,6 +1,6 @@
 import "../../styles/Hero.css";
 
-import heroProduct from "../../assets/images/hero-product.png";
+import heroProduct from "../../assets/hero-product.png";
 
 function Hero() {
   const handleScroll = () => {
@@ -18,7 +18,7 @@ function Hero() {
 
       <div className="hero__content">
         <div className="hero__eyebrow">
-          Smoothie · café · snacks
+          Smoothie · café · snacks · Batidos
         </div>
 
         <h1 className="hero__title">

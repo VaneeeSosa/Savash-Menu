@@ -8,6 +8,17 @@ export interface Product {
   drinkColor?: string;
 }
 
+/* export interface BuilderOption {
+  id: string;
+  name: string;
+  description?: string;
+}
+
+export interface BuilderStep {
+  id: number;
+  name: string;
+  options: BuilderOption[];
+} */
 export interface BuilderOption {
   id: string;
   name: string;
@@ -18,6 +29,12 @@ export interface BuilderStep {
   id: number;
   name: string;
   options: BuilderOption[];
+
+  /*
+    Número máximo de opciones que se pueden elegir
+    en este paso.
+  */
+  maxSelections?: number;
 }
 
 export const frappes: Product[] = [

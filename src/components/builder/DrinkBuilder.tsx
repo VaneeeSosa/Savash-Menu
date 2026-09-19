@@ -10,31 +10,68 @@ import "../../styles/drinkBuilder.css";
 function DrinkBuilder() {
   const [currentStep, setCurrentStep] = useState(0);
 
-  const [selections, setSelections] = useState<
-    Record<number, string | null>
-  >({
-    1: null,
-    2: null,
-    3: null,
-  });
+  const [selections, setSelections] =
+    useState<Record<number, string[]>>({
+      1: [],
+      2: [],
+      3: [],
+    });
 
-  const currentStepData = smoothieSteps[currentStep];
+  const currentStepData =
+    smoothieSteps[currentStep];
 
   const handleSelect = (optionId: string) => {
     const stepId = currentStepData.id;
 
+    const currentSelections =
+      selections[stepId] ?? [];
+
+    const maxSelections =
+      currentStepData.maxSelections ?? 1;
+
+    // Si ya estaba seleccionado, lo quitamos.
+    if (
+      currentSelections.includes(optionId)
+    ) {
+      setSelections((previous) => ({
+        ...previous,
+        [stepId]: currentSelections.filter(
+          (id) => id !== optionId
+        ),
+      }));
+
+      return;
+    }
+
+    // No permitir más selecciones del máximo.
+    if (
+      currentSelections.length >=
+      maxSelections
+    ) {
+      return;
+    }
+
+    const newSelections = [
+      ...currentSelections,
+      optionId,
+    ];
+
     setSelections((previous) => ({
       ...previous,
-      [stepId]: optionId,
+      [stepId]: newSelections,
     }));
 
-    /*
-      Al seleccionar una opción avanzamos
-      automáticamente al siguiente paso.
-    */
-    if (currentStep < smoothieSteps.length - 1) {
+    // Avanza únicamente cuando el paso está completo.
+    if (
+      newSelections.length ===
+        maxSelections &&
+      currentStep <
+        smoothieSteps.length - 1
+    ) {
       window.setTimeout(() => {
-        setCurrentStep((previous) => previous + 1);
+        setCurrentStep(
+          (previous) => previous + 1
+        );
       }, 180);
     }
   };
@@ -55,8 +92,8 @@ function DrinkBuilder() {
           </h2>
 
           <p className="builder__intro">
-            Tres pasos. Una combinación que es
-            completamente tuya.
+            Combina dos bases, elige tu aloe
+            y termina con tu té favorito.
           </p>
         </div>
 
@@ -64,13 +101,16 @@ function DrinkBuilder() {
           steps={smoothieSteps}
           currentStep={currentStep}
           onStepChange={setCurrentStep}
+          selections={selections}
         />
 
         <div className="builder__grid">
           <BuilderOptions
             step={currentStepData}
-            selectedOption={
-              selections[currentStepData.id]
+            selectedOptions={
+              selections[
+                currentStepData.id
+              ] ?? []
             }
             onSelect={handleSelect}
           />

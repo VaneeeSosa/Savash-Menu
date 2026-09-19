@@ -1,33 +1,63 @@
 import type { BuilderStep } from "../../types/menu";
+
 import "../../styles/DrinkPreview.css";
 
 interface DrinkPreviewProps {
   steps: BuilderStep[];
-  selections: Record<number, string | null>;
+  selections: Record<number, string[]>;
   title?: string;
 }
 
 function DrinkPreview({
   steps,
   selections,
-  title = "Tu bebida",
+  title = "Tu batido",
 }: DrinkPreviewProps) {
-  const selectedOptions = steps
-    .map((step) => {
-      const selectedId =
-        selections[step.id];
+  const selectedItems = steps.flatMap(
+    (step) => {
+      const selectedIds =
+        selections[step.id] ?? [];
 
-      const option = step.options.find(
-        (item) => item.id === selectedId
-      );
+      return selectedIds
+        .map((selectedId) => {
+          const option =
+            step.options.find(
+              (item) =>
+                item.id === selectedId
+            );
 
-      return option;
-    })
-    .filter(Boolean);
+          if (!option) return null;
 
-  const base =
-    selectedOptions[0]?.name ??
-    "Elige una base";
+          return {
+            ...option,
+            stepName: step.name,
+          };
+        })
+        .filter(Boolean);
+    }
+  );
+
+  const bases =
+    steps[0]?.options.filter((option) =>
+      selections[1]?.includes(option.id)
+    ) ?? [];
+
+  const firstBase =
+    bases[0]?.name ?? "Elige tus bases";
+
+  const totalSelections =
+    selectedItems.length;
+
+  const totalRequired =
+    steps.reduce(
+      (total, step) =>
+        total +
+        (step.maxSelections ?? 1),
+      0
+    );
+
+  const completed =
+    totalSelections === totalRequired;
 
   return (
     <aside className="drink-preview">
@@ -37,32 +67,39 @@ function DrinkPreview({
         </div>
 
         <div className="drink-preview__name">
-          {selectedOptions.length > 0
-            ? base
-            : title === "Tu batido"
-              ? "Elige una base"
-              : "Elige tu bebida"}
+          {totalSelections > 0
+            ? firstBase
+            : title}
         </div>
 
         <div className="drink-preview__tags">
-          {selectedOptions
-            .slice(1)
-            .map((option) => (
+          {selectedItems
+            .slice(
+              bases.length > 0
+                ? 0
+                : 0
+            )
+            .map((item) => (
               <span
-                key={option!.id}
+                key={`${item!.stepName}-${item!.id}`}
                 className="drink-preview__tag"
               >
-                + {option!.name}
+                {item!.name}
               </span>
             ))}
         </div>
       </div>
 
-      <div className="drink-preview__status">
-        {selectedOptions.length ===
-        steps.length
+      <div
+        className={`drink-preview__status ${
+          completed
+            ? "drink-preview__status--complete"
+            : ""
+        }`}
+      >
+        {completed
           ? "Combinación completa"
-          : `${selectedOptions.length}/${steps.length} pasos`}
+          : `${totalSelections}/${totalRequired} elecciones`}
       </div>
     </aside>
   );

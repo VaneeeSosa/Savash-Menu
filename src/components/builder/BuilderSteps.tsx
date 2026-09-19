@@ -5,17 +5,26 @@ interface BuilderStepsProps {
   steps: BuilderStep[];
   currentStep: number;
   onStepChange: (step: number) => void;
+  selections?: Record<number, string[]>;
 }
 
 function BuilderSteps({
   steps,
   currentStep,
   onStepChange,
+  selections = {},
 }: BuilderStepsProps) {
   return (
     <div className="builder-steps">
       {steps.map((step, index) => {
         const active = index === currentStep;
+
+        const currentSelections =
+          selections[step.id] ?? [];
+
+        const completed =
+          currentSelections.length >=
+          (step.maxSelections ?? 1);
 
         return (
           <button
@@ -25,8 +34,14 @@ function BuilderSteps({
               active
                 ? "builder-step--active"
                 : ""
+            } ${
+              completed
+                ? "builder-step--completed"
+                : ""
             }`}
-            onClick={() => onStepChange(index)}
+            onClick={() =>
+              onStepChange(index)
+            }
           >
             <span className="builder-step__number">
               {String(index + 1).padStart(2, "0")}

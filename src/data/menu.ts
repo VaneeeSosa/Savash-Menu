@@ -5,18 +5,31 @@ import type { BuilderStep, Product } from "../types/menu";
    ========================================================= */
 import chocoAvellana from "../assets/images/batidos/chocoAvellana.png";
 import arrozLeche from "../assets/images/batidos/arrozLeche.png";
+import dulceLeche from "../assets/images/batidos/batidoDulceLeche.png";
+import Fresa from "../assets/images/batidos/batidoFresa.png";
+import Vainilla from "../assets/images/batidos/batidoVainilla.png";
 
 import chocoMoka from "../assets/images/frappes/chocoMoka.png";
-import vainillaCaramel from "../assets/images/frappes/vainillaCaramel.png";
+import vainillaCaramel from "../assets/images/frappes/frappeVainillaCaramel.png";
 
 import explosionTropical from "../assets/images/bebidasF/explosionTropical.png";
 import poncheFrutas from "../assets/images/bebidasF/poncheFrutas.png";
+import Colageno from "../assets/images/bebidasF/colageno.png";
+import CR7 from "../assets/images/bebidasF/CR7.png";
+import mangoDurazno from "../assets/images/bebidasF/duraznoMango.png";
+import lateFrio from "../assets/images/bebidasF/lateFrio.png";
+import teAloe from "../assets/images/bebidasF/teAloe.png";
 
 import capuchino from "../assets/images/bebidasC/capuchino.png";
 import poncheFrutasCaliente from "../assets/images/bebidasC/poncheFrutas.png";
+import pinaColada from "../assets/images/bebidasC/pinaColada.png";
 
 import arrozConLecheEspecialidad from "../assets/images/especialidades/arrozLeche.png";
 import paylimon from "../assets/images/especialidades/payLimon.png";
+import fresa from "../assets/images/especialidades/batidoFresa.png";
+import ManzanaCaramel from "../assets/images/especialidades/EspManzanaCaramel.png";
+import payFresa from "../assets/images/especialidades/EspPayFresaFrutoR.png";
+import trufa from "../assets/images/especialidades/trufa.png";
 
 import barraAvellana from "../assets/images/snacks/barraAvellana.png";
 import barraChocolate from "../assets/images/snacks/barraChoco.png";
@@ -35,6 +48,8 @@ export const smoothieSteps: BuilderStep[] = [
   {
     id: 1,
     name: "Base",
+    maxSelections: 2,
+
     options: [
       {
         id: "choco-avellana",
@@ -82,6 +97,8 @@ export const smoothieSteps: BuilderStep[] = [
   {
     id: 2,
     name: "Aloe",
+    maxSelections: 2,
+
     options: [
       {
         id: "aloe-mango",
@@ -103,12 +120,19 @@ export const smoothieSteps: BuilderStep[] = [
         id: "aloe-natural",
         name: "Natural",
       },
+      {
+        id: "fruta-yogurt",
+        name: "Fruta / yogurt",
+        description: "Pregunta por disponibilidad",
+      },
     ],
   },
 
   {
     id: 3,
     name: "Té",
+    maxSelections: 1,
+
     options: [
       {
         id: "jamaica-pitaya",
@@ -169,6 +193,7 @@ export const batidos: Product[] = [
     description: "Fresa",
     //category: "batidos",
     price: null,
+    image: Fresa,
   },
   {
     id: "batido-vainilla",
@@ -176,6 +201,7 @@ export const batidos: Product[] = [
     description: "Vainilla",
    //category: "batidos",
     price: null,
+    image: Vainilla,
   },
   {
     id: "batido-arroz-leche",
@@ -191,6 +217,7 @@ export const batidos: Product[] = [
     description: "Dulce de leche",
     //category: "batidos",
     price: null,
+    image: dulceLeche,
   },
   {
     id: "batido-frutas-tropicales",
@@ -205,6 +232,7 @@ export const batidos: Product[] = [
     description: "Piña · coco",
     //category: "batidos",
     price: null,
+    image: pinaColada,
   },
   {
     id: "batido-coco",
@@ -277,7 +305,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
-    image: explosionTropical,
+    image: poncheFrutas,
   },
   {
     id: "mega-te-moras-bosque",
@@ -285,6 +313,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
+    image: explosionTropical,
   },
   {
     id: "mega-te-cr7",
@@ -292,6 +321,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
+    image: CR7,
   },
   {
     id: "mega-te-colageno",
@@ -299,6 +329,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
+    image: Colageno,
   },
   {
     id: "mega-te-nitewores",
@@ -321,6 +352,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
+    image: mangoDurazno,
   },
   {
     id: "mega-te-te-aloe",
@@ -328,6 +360,7 @@ export const coldDrinks: Product[] = [
     description: "Mega-TE",
     //category: "frias",
     price: 110,
+    image: teAloe,
   },
   {
     id: "mega-te-liftoff",
@@ -350,6 +383,14 @@ export const coldDrinks: Product[] = [
     //category: "frias",
     price: 110,
   },
+  {
+    id: "late-frio-protein-crunch",
+    name: "late frío protein crunch",
+    description: "Late",
+    //category: "frias",
+    price: 110,
+    image: lateFrio,
+  },
 ];
 
 /* =========================================================
@@ -358,15 +399,16 @@ export const coldDrinks: Product[] = [
 
 export const hotDrinks: Product[] = [
   // Té + aloe
-  {
+/*   {
     id: "protein-mix",
     name: "Protein mix",
     //category: "calientes",
     price: 110,
-  },
+  }, */
   {
     id: "ponche-frutas-caliente",
     name: "Ponche de frutas",
+    description: "protein-mix",
     //category: "calientes",
     price: 110,
     image: poncheFrutasCaliente,
@@ -374,8 +416,10 @@ export const hotDrinks: Product[] = [
   {
     id: "mango-durazno-caliente",
     name: "Mango durazno",
+    description: "protein-mix",
     //category: "calientes",
     price: 110,
+    image: mangoDurazno,
   },
   {
     id: "glow-cd",
@@ -387,6 +431,7 @@ export const hotDrinks: Product[] = [
   {
     id: "sueno-profundo",
     name: "Sueño profundo",
+    description: "blisglicinato de magnesio y azafran",
     //category: "calientes",
     price: 110,
   },
@@ -405,6 +450,7 @@ export const hotDrinks: Product[] = [
     description: "Con fibra",
     //category: "calientes",
     price: 110,
+    image: pinaColada,
   },
 
   // Con café
@@ -468,24 +514,28 @@ export const specialties: Product[] = [
     name: "Frutos rojos",
     //category: "especialidades",
     price: 140,
+    image: payFresa,
   },
   {
     id: "pay-fresa",
     name: "Pay de fresa",
     //category: "especialidades",
     price: 140,
+    image: fresa,
   },
   {
     id: "manzana-caramel",
     name: "Manzana caramel",
     //category: "especialidades",
     price: 140,
+    image: ManzanaCaramel,
   },
   {
     id: "trufa",
     name: "Trufa",
     //category: "especialidades",
     price: 140,
+    image: trufa,
   },
   {
     id: "arroz-con-leche-especialidad",
